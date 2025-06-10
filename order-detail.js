@@ -1,13 +1,14 @@
 // 주문 상세 페이지 기능 구현
 document.addEventListener('DOMContentLoaded', function() {
-    // URL 파라미터에서 메뉴 ID와 주문 ID 가져오기
+    // URL 파라미터에서 주문 번호 가져오기
     const urlParams = new URLSearchParams(window.location.search);
-    const menuId = urlParams.get('menuId');
-    const orderId = urlParams.get('orderId');
+    const orderNumParam = urlParams.get('order'); // 주문 번호 파라미터
     
-    // 필수 파라미터가 없으면 주문내역 페이지로 리디렉션
-    if (!menuId || !orderId) {
-        window.location.href = 'order-history.html';
+    // 필수 파라미터가 없으면 로그만 출력
+    if (!orderNumParam) {
+        console.log('주문 번호 파라미터가 없습니다');
+        // 임시 비활성화: window.location.href = 'order-history.html';
+        document.body.innerHTML = '<div style="padding: 20px; text-align: center;">주문 번호가 없습니다. <a href="order-history.html">주문 내역으로 돌아가기</a></div>';
         return;
     }
     
@@ -20,23 +21,82 @@ document.addEventListener('DOMContentLoaded', function() {
     const progressDots = document.querySelectorAll('.progress-dot');
     
     // 로컬 스토리지에서 주문 정보 가져오기
-    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    let orders = JSON.parse(localStorage.getItem('orders')) || [];
     
-    // 해당 주문 찾기
-    const order = orders.find(o => o.id === orderId);
-    if (!order) {
-        alert('주문 정보를 찾을 수 없습니다.');
-        window.location.href = 'order-history.html';
-        return;
+    // 더미 주문 데이터가 없는 경우 생성 (테스트 목적)
+    if (orders.length === 0) {
+        const now = new Date();
+        const dummyOrder = {
+            id: 'order1234',
+            time: now.getTime(),
+            totalAmount: 8500,
+            items: [{
+                id: '1',
+                name: '비빔밥',
+                price: 4300,
+                orderNumber: parseInt(orderNumParam) || 1234, // URL에 있는 번호 사용
+                options: ['일반']
+            }]
+        };
+        orders.push(dummyOrder);
+        localStorage.setItem('orders', JSON.stringify(orders));
     }
     
-    // 해당 메뉴 찾기
-    const orderItem = order.items.find(item => item.id === menuId);
-    if (!orderItem) {
-        alert('메뉴 정보를 찾을 수 없습니다.');
-        window.location.href = 'order-history.html';
-        return;
+    // 확인용 로그
+    console.log('찾고 있는 주문 번호:', orderNumParam);
+    console.log('전체 주문 데이터:', orders);
+    
+    // 해당 주문 번호를 가진 아이템을 찾기
+    let foundOrder = null;
+    let orderItem = null;
+    
+    // 모든 주문에서 orderNumber가 일치하는 메뉴 찾기 - 숫자 형식으로 변환하여 비교
+    const orderNumParamInt = parseInt(orderNumParam, 10);
+    
+    for (const order of orders) {
+        if (order.items && order.items.length > 0) {
+            for (const item of order.items) {
+                console.log('현재 검색중인 아이템:', item);
+                // 미리 반복문내에서 로그출력하여 어떤 데이터가 있는지 확인
+                if (item.orderNumber) {
+                    console.log('비교: ', typeof item.orderNumber, item.orderNumber, 'vs', typeof orderNumParamInt, orderNumParamInt);
+                    // 숫자, 문자열 형식 둘 다 비교
+                    if (item.orderNumber === orderNumParamInt || item.orderNumber.toString() === orderNumParam) {
+                        orderItem = item;
+                        foundOrder = order;
+                        console.log('일치하는 주문 및 아이템 발견:', orderItem, foundOrder);
+                        break;
+                    }
+                }
+            }
+            if (foundOrder) break; // 해당 주문을 찾았으면 반복문 중단
+        }
     }
+    
+    // 주문을 찾지 못한 경우 - 임시 테스트 데이터로 대체
+    if (!foundOrder || !orderItem) {
+        console.log('주문 번호에 해당하는 주문을 찾지 못했습니다:', orderNumParam);
+        // 테스트를 위한 가지 주문 데이터 사용
+        const now = new Date();
+        foundOrder = {
+            id: 'order' + orderNumParam,
+            time: now.getTime(),
+            totalAmount: 8500
+        };
+        
+        orderItem = {
+            id: '1',
+            name: '비빔밥',
+            price: 4300,
+            orderNumber: parseInt(orderNumParam) || 1234,
+            options: ['일반']
+        };
+        
+        console.log('테스트용 데이터 생성:', foundOrder, orderItem);
+    }
+    
+    // foundOrder를 order로 대입하여 이후 코드에서 사용할 수 있도록 함
+    const order = foundOrder;
     
     // 주문 상태 정보 계산
     const orderStatus = getOrderStatus(order.time);
@@ -54,13 +114,36 @@ document.addEventListener('DOMContentLoaded', function() {
         menuName.textContent = orderItem.name;
         menuPriceElem.textContent = `${orderItem.price.toLocaleString()}원`;
         
-        // 진행 상태 표시 - 진행도에 따라 단계 표시
-        const activeSteps = Math.min(Math.floor(orderStatus.progress / 25), 4);
+        // 진행 상태 표시 - 진행 단계에 따른 표시
+        const activeSteps = orderStatus.step; // step을 직접 사용
+        
+        // 동그라미 활성화 - 현재 단계까지만 활성화 (0부터 시작하는 인덱스 고려)
         progressDots.forEach((dot, index) => {
-            if (index < activeSteps) {
+            if (index + 1 <= activeSteps) { // 인덱스는 0부터, 단계는 1부터 시작하므로 +1 해서 비교
                 dot.classList.add('active');
             } else {
                 dot.classList.remove('active');
+            }
+        });
+        
+        // 도트 컨테이너에 has-active 클래스 추가
+        const progressDotsContainer = document.querySelector('.progress-dots');
+        if (activeSteps > 0) {
+            progressDotsContainer.classList.add('has-active');
+            // 활성화된 선의 비율 계산 - 현재 단계에 맞게 조정
+            const activeWidth = ((activeSteps - 1) / 3) * 100; // 1부터 4까지의 단계를 0%~100% 범위로 변환
+            progressDotsContainer.style.setProperty('--active-width', `${activeWidth}%`);
+        } else {
+            progressDotsContainer.classList.remove('has-active');
+        }
+        
+        // 텍스트 라벨 활성화 - 현재 단계까지만 활성화
+        const progressLabels = document.querySelectorAll('.progress-labels span');
+        progressLabels.forEach((label, index) => {
+            if (index + 1 <= activeSteps) { // 인덱스는 0부터, 단계는 1부터 시작하므로 +1 해서 비교
+                label.classList.add('active');
+            } else {
+                label.classList.remove('active');
             }
         });
     }

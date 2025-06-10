@@ -33,6 +33,12 @@
     height: 2px;
     background-color: #ddd;
     z-index: 0;
+    transition: background-color 0.3s;
+}
+
+/* 활성화된 선을 위한 스타일 */
+.progress-dots.has-active::before {
+    background: linear-gradient(to right, #ff424f 0%, #ff424f var(--active-width, 0%), #ddd var(--active-width, 0%), #ddd 100%);
 }
 
 .progress-dot {
@@ -54,6 +60,11 @@
     font-size: 11px;
     color: #666;
     margin-top: 5px;
+}
+
+.progress-labels span.active {
+    color: #ff424f;
+    font-weight: bold;
 }
 
 .progress-labels span {
@@ -262,15 +273,15 @@
 }
 
 .qr-code-wrapper {
-    border: 3px solid #ff424f;
+    border: 10px solid #ff424f;
     padding: 10px;
     margin-bottom: 16px;
     border-radius: 8px;
 }
 
 .qr-code {
-    width: 180px;
-    height: 180px;
+    width: 250px;
+    height: 250px;
     margin: 0;
 }
 

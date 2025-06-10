@@ -161,26 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'index.html';
     });
     
-    // 하단 탭 메뉴 이벤트
-    document.getElementById('home-tab').addEventListener('click', function() {
-        window.location.href = 'index.html';
-    });
-    
-    document.getElementById('search-tab').addEventListener('click', function() {
-        // 검색 기능은 아직 구현되지 않음
-    });
-    
-    document.getElementById('cart-tab').addEventListener('click', function() {
-        window.location.href = 'cart.html';
-    });
-    
-    document.getElementById('orders-tab').addEventListener('click', function() {
-        window.location.href = 'order-history.html';
-    });
-    
-    document.getElementById('weekly-menu-tab').addEventListener('click', function() {
-        // 이미 주간메뉴 페이지에 있음
-    });
+    // 하단 탭 메뉴 제거됨
 
     // 초기 로딩 시 메뉴 렌더링
     renderWeeklyMenu();

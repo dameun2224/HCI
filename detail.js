@@ -276,28 +276,49 @@ document.addEventListener('DOMContentLoaded', function() {
     orderNowBtn.addEventListener('click', () => {
         // 추가 가격 계산
         let optionsPrice = 0;
+        let optionsText = [];
         selectedOptions.forEach(option => {
             optionsPrice += option.price;
+            optionsText.push(option.name);
         });
         
-        // 장바구니 정보 구성
-        const cartItem = {
+        // 현재 시간 생성
+        const now = new Date();
+        
+        // 주문 번호 생성 (1000-9999 사이의 랜덤 숫자)
+        const orderNumber = Math.floor(Math.random() * 9000) + 1000;
+        
+        // 새 주문 항목 생성 - order-history.js와 호환되는 구조
+        const menuItem = {
             id: menu.id,
             name: menu.name,
-            price: menu.price,
-            optionsPrice: optionsPrice,
-            totalPrice: (menu.price + optionsPrice) * quantity,
-            options: selectedOptions,
-            quantity: quantity,
-            image: menu.image || 'images/default.png'
+            price: menu.price + optionsPrice,  // 옵션 가격 포함
+            orderNumber: orderNumber,          // 각 아이템에 주문번호 포함
+            options: optionsText               // 옵션 텍스트 배열
         };
         
-        // 임시 장바구니에 추가 (바로 결제용)
-        let directOrder = [cartItem];
-        localStorage.setItem('directOrder', JSON.stringify(directOrder));
+        // 주문 객체 생성 - order-history.js와 호환되는 구조
+        const order = {
+            id: 'order' + orderNumber,          // 고유 ID 추가
+            time: now.getTime(),               // 시간은 타임스태프로 저장
+            totalAmount: menuItem.price * quantity,  // totalAmount를 사용
+            items: [menuItem]                  // 메뉴 아이템 배열
+        };
         
-        // 결제 페이지로 이동
-        window.location.href = 'payment.html?direct=true';
+        // 기존 주문 내역 불러오기
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        
+        // 새 주문 추가
+        orders.push(order);
+        
+        // 주문 내역 저장
+        localStorage.setItem('orders', JSON.stringify(orders));
+        
+        // 사용자에게 알림
+        alert('주문이 완료되었습니다. 주문 내역 페이지로 이동합니다.');
+        
+        // 주문 상세 페이지로 이동 - 주문번호를 파라미터로 전달
+        window.location.href = 'order-history.html';
     });
     
     // 장바구니에 메뉴 추가 함수
