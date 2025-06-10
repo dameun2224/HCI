@@ -10,7 +10,7 @@ const menuData = [
         allergens: '계란(Eggs)',
         hasOptions: false,
         options: [],
-        image: 'images/1.png',
+        image: 'images/1.jpg',
         isFavorite: false
     },
     {
@@ -18,7 +18,7 @@ const menuData = [
         name: '돈육짜글이*계란후라이',
         corner: '2번, 찌개/돌솥',
         category: 'stew',
-        nameEng: 'Spicy Pork Stew',
+        nameEng: 'Spicy Pork Stew with Fried Egg',
         price: 5000,
         allergens: '계란(Eggs)',
         hasOptions: false,
@@ -88,7 +88,7 @@ const menuData = [
         allergens: '계란(Eggs), 밀(Wheat)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/7.png',
         isFavorite: false
     },
     {
@@ -101,7 +101,7 @@ const menuData = [
         allergens: '계란(Eggs), 돼지고기(Pork)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/8.png',
         isFavorite: false
     },
     {
@@ -114,7 +114,7 @@ const menuData = [
         allergens: '계란(Eggs), 갑각류(Shellfish)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/9.png',
         isFavorite: false
     },
     {
@@ -127,7 +127,7 @@ const menuData = [
         allergens: '계란(Eggs)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/10.png',
         isFavorite: false
     },
     {
@@ -140,7 +140,7 @@ const menuData = [
         allergens: '계란(Eggs)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/11.png',
         isFavorite: false
     },
     {
@@ -153,7 +153,7 @@ const menuData = [
         allergens: '계란(Eggs), 유제품(Dairy)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/12.png',
         isFavorite: false
     },
     {
@@ -166,7 +166,7 @@ const menuData = [
         allergens: '계란(Eggs), 유제품(Dairy)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/13.png',
         isFavorite: false
     },
     {
@@ -179,7 +179,7 @@ const menuData = [
         allergens: '없음(None)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/14.png',
         isFavorite: false
     },
     {
@@ -192,7 +192,7 @@ const menuData = [
         allergens: '유제품(Dairy)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/15.png',
         isFavorite: false
     },
     {
@@ -205,7 +205,7 @@ const menuData = [
         allergens: '계란(Eggs)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/16.png',
         isFavorite: false
     },
     {
@@ -218,7 +218,7 @@ const menuData = [
         allergens: '계란(Eggs), 생선(Fish)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/17.png',
         isFavorite: false
     },
     {
@@ -231,7 +231,7 @@ const menuData = [
         allergens: '대두(Soy)',
         hasOptions: true,
         options: [{name: '곱빼기', price: 1000}],
-        image: 'images/default.png',
+        image: 'images/18.png',
         isFavorite: false
     },
     {
@@ -244,7 +244,7 @@ const menuData = [
         allergens: '없음(None)',
         hasOptions: true,
         options: [{name: '곱빼기', price: 1000}],
-        image: 'images/default.png',
+        image: 'images/19.png',
         isFavorite: false
     },
     {
@@ -257,7 +257,7 @@ const menuData = [
         allergens: '생선(Fish)',
         hasOptions: true,
         options: [{name: '곱빼기', price: 1000}],
-        image: 'images/default.png',
+        image: 'images/20.png',
         isFavorite: false
     },
     {
@@ -270,7 +270,7 @@ const menuData = [
         allergens: '갑각류(Shellfish)',
         hasOptions: true,
         options: [{name: '곱빼기', price: 1000}],
-        image: 'images/default.png',
+        image: 'images/21.png',
         isFavorite: false
     },
     {
@@ -283,7 +283,7 @@ const menuData = [
         allergens: '계란(Eggs)',
         hasOptions: true,
         options: [{name: '곱빼기', price: 1000}],
-        image: 'images/default.png',
+        image: 'images/22.png',
         isFavorite: false
     },
     {
@@ -296,7 +296,7 @@ const menuData = [
         allergens: '없음(None)',
         hasOptions: false,
         options: [],
-        image: 'images/default.png',
+        image: 'images/23.png',
         isFavorite: false
     },
     {
