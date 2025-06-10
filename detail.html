@@ -17,12 +17,6 @@
                 <div class="header-left">
                     <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i></button>
                 </div>
-                <div class="header-title">
-                    <h1>메뉴 상세</h1>
-                </div>
-                <div class="header-right">
-                    <span style="color: white;">★</span>
-                </div>
             </div>
 
             <!-- 메뉴 상세 컨텐츠 -->
@@ -45,8 +39,40 @@
                 </div>
 
                 <div class="detail-section">
-                    <h3>알레르기 정보</h3>
-                    <p id="menu-allergies">알레르기 정보가 없습니다.</p>
+                    <button id="allergy-info-btn" class="allergy-info-btn">
+                        <span class="allergy-icon"><i class="fas fa-exclamation-triangle"></i></span>
+                        알레르기 정보 확인
+                    </button>
+                </div>
+                
+                <!-- 알레르기 정보 모달 -->
+                <div id="allergy-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>알레르기 정보 안내</h3>
+                            <span class="close-btn">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <p>이 메뉴에는 다음 알레르기 유발 식재료가 포함되어 있습니다:</p>
+                            <div id="menu-allergies" class="allergy-list">
+                                알레르기 정보가 없습니다.
+                            </div>
+                            <div class="allergy-icons">
+                                <div class="allergy-icon-item">
+                                    <span>🥚</span> 계란 Egg
+                                </div>
+                                <div class="allergy-icon-item">
+                                    <span>🐟</span> 생선 Fish
+                                </div>
+                                <div class="allergy-icon-item">
+                                    <span>🥛</span> 우유 Milk
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="confirm-btn">확인</button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 옵션이 있는 경우 표시 -->

@@ -1,14 +1,16 @@
 /* 장바구니 페이지 스타일 */
+.header {
+    display: flex;
+    justify-content: left;
+}
+
+
 .back-btn {
-    font-size: 22px;
-    color: #333;
-    margin-right: 15px;
-    text-decoration: none;
+    margin: 0;
 }
 
 /* 장바구니 콘텐츠 영역 */
 .cart-content {
-    padding: 10px 15px;
     height: calc(100% - 60px);
     margin-bottom: 70px;
 }
@@ -130,7 +132,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 479px;
     max-width: 500px;
     box-sizing: border-box;
 }
@@ -175,4 +177,5 @@
     position: relative;
     height: 100%;
     overflow-y: auto;
+    padding-top: 0;
 }

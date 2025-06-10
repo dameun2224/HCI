@@ -33,6 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuAllergiesElement = document.getElementById('menu-allergies');
     const optionsSection = document.getElementById('options-section');
     const optionsContainer = document.getElementById('options-container');
+    
+    // 알레르기 정보 모달 요소
+    const allergyInfoBtn = document.getElementById('allergy-info-btn');
+    const allergyModal = document.getElementById('allergy-modal');
+    const closeBtn = document.querySelector('.close-btn');
+    const confirmBtn = document.querySelector('.confirm-btn');
     const addToCartBtn = document.getElementById('add-to-cart-btn');
     
     // 메뉴 정보 표시
@@ -45,7 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
         menuNameEngElement.textContent = menu.nameEng;
         menuCornerElement.textContent = menu.corner;
         menuPriceElement.textContent = `${menu.price.toLocaleString()}원`;
-        menuAllergiesElement.textContent = menu.allergens || '알레르기 정보가 없습니다.';
+        
+        // 알레르기 정보 설정
+        if (menu.allergens && menu.allergens !== '없음') {
+            menuAllergiesElement.innerHTML = menu.allergens;
+        } else {
+            menuAllergiesElement.innerHTML = '<p>알레르기 정보가 없습니다.</p>';
+        }
         
         // 즐겨찾기 상태 설정 - 버튼이 존재하는 경우에만 실행
         if (favoriteBtn) {
@@ -91,6 +103,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // 뒤로 가기 버튼 클릭 이벤트
     backBtn.addEventListener('click', () => {
         window.location.href = 'index.html';
+    });
+    
+    // 알레르기 정보 버튼 클릭 이벤트
+    allergyInfoBtn.addEventListener('click', () => {
+        allergyModal.style.display = 'block';
+    });
+    
+    // 모달 닫기 버튼 클릭 이벤트
+    closeBtn.addEventListener('click', () => {
+        allergyModal.style.display = 'none';
+    });
+    
+    // 모달 확인 버튼 클릭 이벤트
+    confirmBtn.addEventListener('click', () => {
+        allergyModal.style.display = 'none';
+    });
+    
+    // 모달 외부 클릭 시 닫기
+    window.addEventListener('click', (event) => {
+        if (event.target === allergyModal) {
+            allergyModal.style.display = 'none';
+        }
     });
     
     // 즐겨찾기 버튼 클릭 이벤트 - 버튼이 존재하는 경우에만 이벤트 리스너 추가

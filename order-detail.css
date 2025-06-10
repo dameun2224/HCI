@@ -1,4 +1,13 @@
 /* 주문 상세 페이지 스타일 */
+.header {
+    display: flex;
+    justify-content: left;
+}
+
+.header-title h1 {
+    margin-left: 15px;
+}
+
 .progress-section {
     background-color: white;
     padding: 16px;
@@ -206,7 +215,6 @@
 
 .qr-section {
     padding: 0 16px;
-    margin-bottom: 32px;
 }
 
 .qr-container {

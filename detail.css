@@ -2,8 +2,7 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: left;
     padding: 10px 0;
     margin-bottom: 16px;
 }
@@ -76,6 +75,135 @@
     font-size: 18px;
     font-weight: bold;
     color: #333;
+}
+
+/* 알레르기 정보 버튼 스타일 */
+.allergy-info-btn {
+    display: flex;
+    align-items: center;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    color: #444;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    justify-content: center;
+}
+
+.allergy-info-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.allergy-info-btn .allergy-icon {
+    color: #ff9800;
+    margin-right: 8px;
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translate(0, -50px);}
+    to {opacity: 1; transform: translate(0, 0);}
+}
+
+.modal-header {
+    padding: 15px;
+    background-color: #4a90e2;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close-btn {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 15px;
+}
+
+.allergy-list {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.allergy-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.allergy-icon-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.allergy-icon-item span {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.confirm-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.confirm-btn:hover {
+    background-color: #3a80d2;
 }
 
 /* 상세 섹션 */

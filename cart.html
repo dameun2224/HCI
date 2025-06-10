@@ -15,10 +15,11 @@
             <!-- 헤더 섹션 -->
             <header class="header">
                 <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
-                <div class="header-title">
-                    <h1>장바구니</h1>
-                </div>
             </header>
+
+            <div class="header-title">
+                <h1>장바구니</h1>
+            </div>
 
             <!-- 장바구니 내용 -->
             <main class="cart-content">
@@ -35,16 +36,15 @@
                         <option value="point">포인트 결제</option>
                     </select>
                 </div>
-            </main>
-            
-            <!-- 결제 정보 및 버튼 -->
-            <div class="payment-info">
-                <div class="total">
-                    <span id="totalQuantity">총 0개 메뉴</span>
-                    <span id="totalPrice">0원</span>
+                <!-- 결제 정보 및 버튼 -->
+                <div class="payment-info">
+                    <div class="total">
+                        <span id="totalQuantity">총 0개 메뉴</span>
+                        <span id="totalPrice">0원</span>
+                    </div>
+                    <button id="paymentButton" class="payment-btn">결제하기</button>
                 </div>
-                <button id="paymentButton" class="payment-btn">결제하기</button>
-            </div>
+            </main>
         </div>
     </div>
     <script src="data.js"></script>
