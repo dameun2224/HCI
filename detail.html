@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 상세 - 구내식당</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 메뉴 상세 페이지 -->
+        <div id="detail-page" class="page active-page">
+            <!-- 헤더 -->
+            <div class="header">
+                <div class="header-left">
+                    <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="header-title">
+                    <h1>메뉴 상세</h1>
+                </div>
+            </div>
+
+            <!-- 메뉴 상세 컨텐츠 -->
+            <div class="detail-container">
+                <div class="detail-image">
+                    <!-- 메뉴 이미지 -->
+                </div>
+
+                <div class="detail-info">
+                    <h2 id="menu-name">메뉴명</h2>
+                    <p id="menu-name-eng">Menu Name</p>
+                    <p id="menu-corner">코너 정보</p>
+                    <div class="price-container">
+                        <p id="menu-price" class="price">0,000원</p>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>알레르기 정보</h3>
+                    <p id="menu-allergies">알레르기 정보가 없습니다.</p>
+                </div>
+
+                <!-- 옵션이 있는 경우 표시 -->
+                <div id="options-section" class="detail-section">
+                    <h3>추가 옵션</h3>
+                    <div class="options-container" id="options-container">
+                        <!-- 옵션 버튼들이 자바스크립트로 추가됨 -->
+                    </div>
+                </div>
+
+                <!-- 장바구니 버튼 -->
+                <div class="cart-button-container">
+                    <button id="add-to-cart-btn" class="add-to-cart-btn">장바구니 담기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="detail.js"></script>
+</body>
+</html>

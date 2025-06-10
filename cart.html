@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 - 구내식당</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 장바구니 페이지 -->
+        <div id="cart-page" class="page active-page">
+            <!-- 헤더 섹션 -->
+            <header class="header">
+                <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+                <div class="header-title">
+                    <h1>장바구니</h1>
+                </div>
+            </header>
+
+            <!-- 장바구니 내용 -->
+            <main class="cart-content">
+                <div class="cart-items" id="cartItems">
+                    <!-- 장바구니 아이템이 여기에 동적으로 추가됩니다 -->
+                </div>
+
+                <!-- 결제 수단 선택 -->
+                <div class="payment-method">
+                    <h3>결제 수단</h3>
+                    <select id="paymentMethod">
+                        <option value="card">장바구니 카드</option>
+                        <option value="account">계좌이체</option>
+                        <option value="point">포인트 결제</option>
+                    </select>
+                </div>
+            </main>
+            
+            <!-- 결제 정보 및 버튼 -->
+            <div class="payment-info">
+                <div class="total">
+                    <span id="totalQuantity">총 0개 메뉴</span>
+                    <span id="totalPrice">0원</span>
+                </div>
+                <button id="paymentButton" class="payment-btn">결제하기</button>
+            </div>
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

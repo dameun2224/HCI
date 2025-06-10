@@ -1,0 +1,178 @@
+/* 장바구니 페이지 스타일 */
+.back-btn {
+    font-size: 22px;
+    color: #333;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+/* 장바구니 콘텐츠 영역 */
+.cart-content {
+    padding: 10px 15px;
+    height: calc(100% - 60px);
+    margin-bottom: 70px;
+}
+
+/* 장바구니 아이템 스타일 */
+.cart-items {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 16px;
+    min-height: 100px;
+    max-height: calc(60vh - 180px);
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.cart-item-info {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: #eee;
+    margin-right: 15px;
+    overflow: hidden;
+}
+
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-details h3 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.cart-item-details p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.cart-item-price {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.quantity-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #4a90e2;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.quantity-num {
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.cart-item-delete {
+    color: #ff5252;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+/* 결제 수단 스타일 */
+.payment-method {
+    margin-bottom: 20px;
+}
+
+.payment-method h3 {
+    font-size: 16px;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+#paymentMethod {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 14px;
+}
+
+/* 결제 정보 및 버튼 스타일 */
+.payment-info {
+    background-color: white;
+    border-top: 1px solid #eee;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+}
+
+#totalQuantity {
+    font-size: 14px;
+    color: #666;
+}
+
+#totalPrice {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.payment-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 빈 장바구니 메시지 */
+.empty-cart {
+    text-align: center;
+    padding: 30px 0;
+    color: #666;
+}
+
+/* 컬로 영역이 하단 결제바에 가리지 않도록 패딩 추가 */
+#cart-page {
+    padding-bottom: 70px;
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+}

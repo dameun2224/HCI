@@ -1,0 +1,237 @@
+/* 전체 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: #fff;
+    min-height: 100vh;
+    max-height: 100vh;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 페이지 스타일 */
+.page {
+    display: none;
+    padding: 16px;
+    height: 100%;
+}
+
+.active-page {
+    display: block;
+}
+
+/* 헤더 스타일 */
+.header {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 5x;
+}
+
+.header-title h1 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.header-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-btn {
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* 즐겨찾기 섹션 스타일 */
+.favorites-section {
+    margin-bottom: 10px;
+}
+
+.favorites-section h2 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.favorites-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px;
+    min-height: 164px; /* 최소 높이 설정 */
+    align-items: flex-start; /* 상단 정렬 */
+    background-color: #f2f2f2;
+    border-radius: 10px;
+}
+
+.favorite-item {
+    min-width: 100px;
+    width: 100px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    padding: 8px;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+.favorite-img {
+    width: 100%;
+    height: 80px;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.favorite-item h3 {
+    font-size: 12px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.favorite-item .price {
+    font-size: 12px;
+    color: #666;
+}
+
+.favorite-star {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: #ffcc00;
+    font-size: 16px;
+}
+
+/* 카테고리 탭 스타일 */
+.category-section-1,
+.category-section-2 {
+    margin-bottom: 4px;
+}
+
+.category-tabs {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 3px;
+}
+
+.tab-btn {
+    border: none;
+    padding: 3px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* 첫번째 줄 버튼 */
+.category-section-1 .tab-btn {
+    flex: 1;
+}
+
+/* 두번째 줄 버튼 */
+.category-section-2 .tab-btn {
+    flex: 1;
+}
+
+.tab-btn.active {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+/* 메뉴 목록 스타일 */
+.menu-list {
+    margin-top: 10px;
+    height: calc(86vh - 280px); /* 헤더, 즐겨찾기, 카테고리 탭 높이를 고려한 값 */
+    overflow-y: auto;
+    padding-right: 5px; /* 스크롤바 공간 확보 */
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menu-item {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    padding: 12px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.menu-item.highlighted {
+    background-color: #e6f2ff;
+}
+
+.menu-img {
+    width: 80px;
+    height: 80px;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.menu-info {
+    flex: 1;
+}
+
+.menu-info h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.menu-info p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.menu-info .price {
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.favorite-btn.active {
+    color: #ffcc00;
+}
