@@ -366,7 +366,7 @@ const menuData = [
     },
     {
         id: '30',
-        name: '짜계치',
+        name: '짜계치 (짜파게티+치즈+계란)',
         corner: '7번, 라면/샐러드',
         category: 'ramen',
         nameEng: 'Black Bean Sauce Ramen with Egg and Cheese',

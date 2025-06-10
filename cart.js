@@ -95,24 +95,24 @@ document.addEventListener('DOMContentLoaded', function() {
             const itemTotalPrice = (item.totalPrice || item.price) * item.quantity;
             
             cartItem.innerHTML = `
+                <div class="cart-item-image">
+                    <img src="${imagePath}" alt="${item.name}">
+                </div>
                 <div class="cart-item-info">
-                    <div class="cart-item-image">
-                        <img src="${imagePath}" alt="${item.name}">
-                    </div>
                     <div class="cart-item-details">
                         <h3>${item.name}</h3>
                         <p>${optionsText}</p>
                     </div>
-                </div>
-                <div class="cart-item-price">
-                    <div class="cart-item-quantity">
-                        <button class="quantity-btn minus" data-index="${index}">-</button>
-                        <span class="quantity-num">${item.quantity}</span>
-                        <button class="quantity-btn plus" data-index="${index}">+</button>
-                    </div>
-                    <span>${itemTotalPrice.toLocaleString()}원</span>
-                    <div class="cart-item-delete" data-index="${index}">
-                        <i class="fas fa-trash"></i>
+                    <div class="cart-item-price">
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn minus" data-index="${index}">-</button>
+                            <span class="quantity-num">${item.quantity}</span>
+                            <button class="quantity-btn plus" data-index="${index}">+</button>
+                        </div>
+                        <span>${itemTotalPrice.toLocaleString()}원</span>
+                        <div class="cart-item-delete" data-index="${index}">
+                            <i class="fas fa-trash"></i>
+                        </div>
                     </div>
                 </div>
             `;

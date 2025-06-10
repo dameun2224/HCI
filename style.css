@@ -72,7 +72,7 @@ body {
 }
 
 .favorites-section h2 {
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 5px;
     color: #333;
 }
@@ -109,7 +109,7 @@ body {
 }
 
 .favorite-item h3 {
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 4px;
     white-space: nowrap;
     overflow: hidden;
@@ -117,7 +117,7 @@ body {
 }
 
 .favorite-item .price {
-    font-size: 12px;
+    font-size: 14px;
     color: #666;
 }
 
@@ -201,8 +201,8 @@ body {
 }
 
 .menu-img {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     background-color: #eee;
     border-radius: 4px;
     margin-right: 12px;
@@ -214,18 +214,23 @@ body {
 }
 
 .menu-info h3 {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 4px;
 }
 
 .menu-info p {
-    font-size: 13px;
+    font-size: 16px;
     color: #666;
     margin-bottom: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .menu-info .price {
-    font-size: 15px;
+    font-size: 18px;
     color: #333;
     font-weight: bold;
 }

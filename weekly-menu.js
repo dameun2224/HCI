@@ -5,8 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             day: '월',
             date: '6/9',
+            breakfast: [
+                { name: '물만두떡국, 떡갈비구이*부추샐러드,', price: 3500 }
+            ],
             korean: [
                 { name: '오삼불고기덮밥', price: 5000 }
+            ],
+            omurice: [
+                { name: '치즈오므라이스', price: 4500 }
             ],
             stew: [
                 { name: '부대찌개', price: 5000 }
@@ -18,8 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             day: '화',
             date: '6/10',
+            breakfast: [
+                { name: '샌드위치', price: 3500 }
+            ],
             korean: [
                 { name: '닭갈비덮밥', price: 5000 }
+            ],
+            omurice: [
+                { name: '함박오므라이스', price: 4500 }
             ],
             stew: [
                 { name: '김치찌개', price: 5000 }
@@ -31,8 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             day: '수',
             date: '6/11',
+            breakfast: [
+                { name: '크로와상', price: 3800 }
+            ],
             korean: [
                 { name: '제육볶음', price: 5000 }
+            ],
+            omurice: [
+                { name: '불고기오므라이스', price: 4800 }
             ],
             stew: [
                 { name: '돼지국밥', price: 5000 }
@@ -44,8 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             day: '목',
             date: '6/12',
+            breakfast: [
+                { name: '팬케이크', price: 3500 }
+            ],
             korean: [
                 { name: '고추장불고기', price: 5000 }
+            ],
+            omurice: [
+                { name: '김치오므라이스', price: 4500 }
             ],
             stew: [
                 { name: '순두부찌개', price: 5000 }
@@ -57,8 +81,14 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             day: '금',
             date: '6/13',
+            breakfast: [
+                { name: '프렌치토스트', price: 3800 }
+            ],
             korean: [
                 { name: '쭈꾸미볶음', price: 5500 }
+            ],
+            omurice: [
+                { name: '새우오므라이스', price: 5000 }
             ],
             stew: [
                 { name: '된장찌개', price: 5000 }
@@ -76,15 +106,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 모든 요일의 메뉴를 테이블로 출력
         weeklyMenuData.forEach(dayMenu => {
-            // 한식 메뉴 행
-            const koreanRow = document.createElement('tr');
+            // 조식 메뉴 행
+            const breakfastRow = document.createElement('tr');
             
             // 요일 셀
-            const koreanDayCell = document.createElement('td');
-            koreanDayCell.rowSpan = 3; // 한식, 찌개/돌솥, 샐러드 행을 하나로 합치기
-            koreanDayCell.className = 'date-cell';
-            koreanDayCell.innerHTML = `${dayMenu.day}<br>${dayMenu.date}`;
-            koreanRow.appendChild(koreanDayCell);
+            const dayCell = document.createElement('td');
+            dayCell.rowSpan = 5; // 조식, 한식, 오므라이스, 찌개/돌솥, 샐러드 행을 하나로 합치기
+            dayCell.className = 'date-cell';
+            dayCell.innerHTML = `${dayMenu.day}<br>${dayMenu.date}`;
+            breakfastRow.appendChild(dayCell);
+            
+            // 종류 셀
+            const breakfastTypeCell = document.createElement('td');
+            breakfastTypeCell.textContent = '조식';
+            breakfastRow.appendChild(breakfastTypeCell);
+            
+            // 조식 메뉴 셀
+            const breakfastMenuCell = document.createElement('td');
+            dayMenu.breakfast.forEach((menu, idx) => {
+                breakfastMenuCell.innerHTML += `<div class="menu-item">${menu.name}</div>`;
+                if (idx < dayMenu.breakfast.length - 1) {
+                    breakfastMenuCell.innerHTML += '<hr style="border:0;border-top:1px solid #f0f0f0;margin:8px 0">';
+                }
+            });
+            breakfastRow.appendChild(breakfastMenuCell);
+            
+            weeklyMenuBody.appendChild(breakfastRow);
+            
+            // 한식 메뉴 행
+            const koreanRow = document.createElement('tr');
             
             // 종류 셀
             const koreanTypeCell = document.createElement('td');
@@ -102,6 +152,26 @@ document.addEventListener('DOMContentLoaded', function() {
             koreanRow.appendChild(koreanMenuCell);
             
             weeklyMenuBody.appendChild(koreanRow);
+            
+            // 오므라이스 메뉴 행
+            const omuriceRow = document.createElement('tr');
+            
+            // 종류 셀
+            const omuriceTypeCell = document.createElement('td');
+            omuriceTypeCell.textContent = '오므라이스';
+            omuriceRow.appendChild(omuriceTypeCell);
+            
+            // 오므라이스 메뉴 셀
+            const omuriceMenuCell = document.createElement('td');
+            dayMenu.omurice.forEach((menu, idx) => {
+                omuriceMenuCell.innerHTML += `<div class="menu-item">${menu.name}</div>`;
+                if (idx < dayMenu.omurice.length - 1) {
+                    omuriceMenuCell.innerHTML += '<hr style="border:0;border-top:1px solid #f0f0f0;margin:8px 0">';
+                }
+            });
+            omuriceRow.appendChild(omuriceMenuCell);
+            
+            weeklyMenuBody.appendChild(omuriceRow);
             
             // 찌개/돌솥 메뉴 행
             const stewRow = document.createElement('tr');

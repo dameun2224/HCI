@@ -20,8 +20,10 @@
 .progress-dots {
     display: flex;
     justify-content: space-between;
+    margin: auto;
     margin-bottom: 5px;
     position: relative;
+    width: 80%;
 }
 
 .progress-dots::before {
@@ -123,6 +125,39 @@
     margin-bottom: 15px;
 }
 
+.order-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.order-time-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.order-time-container i.fa-utensils {
+    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #ff424f;
+    color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+}
+
+.tlrekdname {
+    font-size: 18px;
+    color: black;
+    font-weight: 500;
+}
+
 .order-time-container {
     display: flex;
     align-items: center;
@@ -137,8 +172,8 @@
 
 .section-title {
     font-weight: bold;
-    margin: 0 0 10px 0;
-    font-size: 15px;
+    margin: 0 0 10px 10px;
+    font-size: 17px;
 }
 
 .order-items {
@@ -180,24 +215,37 @@
 }
 
 .menu-detail {
+    display: flex;
+    flex-direction: row;
     margin-bottom: 15px;
     padding: 0 12px;
 }
 
 .menu-info {
-    flex: 1;
+    width: 70%;
+}
+
+.menu-info2 {
+    width: 30%;
 }
 
 .menu-info h3 {
-    margin: 0 0 4px 0;
-    font-size: 15px;
+    margin-left: auto;
+    font-size: 16px;
     font-weight: normal;
 }
 
 .menu-price {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
+    padding-right: 10px;
+    text-align: right;
+    font-size: 18px;
+}
+
+.menu-eng-name {
+    margin-top: 2px;
+    font-size: 16px;
+    color: #777;
+    font-weight: normal;
 }
 
 .menu-options {
@@ -289,9 +337,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    color: #333;
+    font-size: 20px;
+    color: black;
     margin-bottom: 5px;
+    font-weight: 500;
 }
 
 .category-number {
@@ -309,7 +358,7 @@
 }
 
 .qr-desc {
-    font-size: 14px;
+    font-size: 18px;
     color: #666;
     text-align: center;
     margin-top: 5px;

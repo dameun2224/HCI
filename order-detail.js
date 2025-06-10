@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const orderNumber = document.getElementById('order-number');
     const orderTime = document.getElementById('order-time');
     const menuName = document.getElementById('menu-name');
+    const menuEngName = document.getElementById('menu-eng-name');
     const menuPriceElem = document.querySelector('.menu-price');
     const progressDots = document.querySelectorAll('.progress-dot');
     
@@ -113,6 +114,28 @@ document.addEventListener('DOMContentLoaded', function() {
         // 메뉴 이름과 가격 설정
         menuName.textContent = orderItem.name;
         menuPriceElem.textContent = `${orderItem.price.toLocaleString()}원`;
+        
+        // 영어 메뉴 이름 가져오기
+        let menuEnglishName = '';
+        // menuData에서 현재 메뉴의 영어 이름 찾기
+        for (const menu of menuData) {
+            if (menu.id === orderItem.id || menu.name === orderItem.name) {
+                menuEnglishName = menu.nameEng || '';
+                break;
+            }
+        }
+        
+        // 영어 메뉴 이름이 없으면 서버에서 전송된 가메뉴가 아닙니다.
+        if (!menuEnglishName && orderItem.name === '비빔밥') {
+            menuEnglishName = 'Bibimbap';
+        } else if (!menuEnglishName && orderItem.name === '김치우동 (매콤하게)') {
+            menuEnglishName = 'Kimchi Udon (Spicy)';
+        } else if (!menuEnglishName) {
+            // 디폴트 영어 이름 생성 로직
+            menuEnglishName = orderItem.name;
+        }
+        
+        menuEngName.textContent = menuEnglishName;
         
         // 진행 상태 표시 - 진행 단계에 따른 표시
         const activeSteps = orderStatus.step; // step을 직접 사용
