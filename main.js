@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 현재 선택된 카테고리 (초기값: 조식/석식)
     let currentCategory = 'breakfast';
     
+    // localStorage에서 즐겨찾기 정보 불러오기
+    loadFavoritesFromLocalStorage();
+    
     // 즐겨찾기 메뉴 렌더링 함수
     function renderFavorites() {
         favoritesContainer.innerHTML = '';
@@ -83,7 +86,34 @@ document.addEventListener('DOMContentLoaded', function() {
         const menuIndex = menuData.findIndex(menu => menu.id === menuId);
         if (menuIndex !== -1) {
             menuData[menuIndex].isFavorite = !menuData[menuIndex].isFavorite;
+            
+            // localStorage에 즐겨찾기 정보 저장
+            saveFavoritesToLocalStorage();
         }
+    }
+    
+    // 즐겨찾기 정보를 localStorage에 저장하는 함수
+    function saveFavoritesToLocalStorage() {
+        const favorites = menuData
+            .filter(menu => menu.isFavorite)
+            .map(menu => menu.id);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+    
+    // localStorage에서 즐겨찾기 정보를 불러와 메뉴데이터에 적용하는 함수
+    function loadFavoritesFromLocalStorage() {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        
+        // 모든 메뉴의 isFavorite 초기화
+        menuData.forEach(menu => menu.isFavorite = false);
+        
+        // localStorage에 저장된 즐겨찾기 정보 적용
+        favorites.forEach(id => {
+            const menuIndex = menuData.findIndex(menu => menu.id === id);
+            if (menuIndex !== -1) {
+                menuData[menuIndex].isFavorite = true;
+            }
+        });
     }
     
     // 메뉴 상세 페이지로 이동 함수
@@ -119,8 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('weekly-menu-btn').addEventListener('click', function() {
-        console.log('주간메뉴 페이지로 이동');
-        // 추후 구현
+        // 주간 메뉴 페이지로 이동
+        window.location.href = 'weekly-menu.html';
     });
     
     // 컨텐츠 초기화 실행

@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // 장바구니 아이템 표시
     renderCartItems();
     
+    // 뒤로가기 버튼 이벤트 리스너
+    document.getElementById('back-btn').addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
+    
     // 결제 버튼 이벤트 리스너
     document.getElementById('paymentButton').addEventListener('click', function() {
         if (cart.length === 0) {

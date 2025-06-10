@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>주간 메뉴 - 교내 구내식당</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="weekly-menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <button id="back-btn" class="back-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h1>주간 메뉴</h1>
+        </header>
+
+        <div class="weekly-menu-container">
+
+            <div class="weekly-menu-table-container">
+                <table class="weekly-menu-table" id="weekly-menu-table">
+                    <tbody id="weekly-menu-body">
+                        <!-- 여기에 JavaScript로 메뉴 테이블이 들어갑니다 -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- <div class="menu-note">
+                <p>※ 식당 사정에 따라 메뉴가 변경될 수 있습니다.</p>
+                <p>※ 알레르기 정보는 메뉴 상세 페이지에서 확인 가능합니다.</p>
+            </div> -->
+        </div>
+
+        <footer class="tab-menu">
+            <button id="home-tab" class="tab-btn active">
+                <i class="fas fa-home"></i>
+                <span>홈</span>
+            </button>
+            <button id="search-tab" class="tab-btn">
+                <i class="fas fa-search"></i>
+                <span>검색</span>
+            </button>
+            <button id="cart-tab" class="tab-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span>장바구니</span>
+            </button>
+            <button id="orders-tab" class="tab-btn">
+                <i class="fas fa-list"></i>
+                <span>주문내역</span>
+            </button>
+            <button id="weekly-menu-tab" class="tab-btn">
+                <i class="fas fa-calendar-alt"></i>
+                <span>주간메뉴</span>
+            </button>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="weekly-menu.js"></script>
+</body>
+</html>

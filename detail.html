@@ -15,7 +15,7 @@
             <!-- 헤더 -->
             <div class="header">
                 <div class="header-left">
-                    <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <button id="back-btn" class="back-btn"><i class="fas fa-chevron-left"></i></button>
                 </div>
             </div>
 
@@ -77,9 +77,27 @@
 
                 <!-- 옵션이 있는 경우 표시 -->
                 <div id="options-section" class="detail-section">
-                    <h3>추가 옵션</h3>
+                    <h3>옵션</h3>
                     <div class="options-container" id="options-container">
-                        <!-- 옵션 버튼들이 자바스크립트로 추가됨 -->
+                        <!-- 옵션 체크박스가 자바스크립트로 추가됨 -->
+                        <div class="option-checkbox">
+                            <input type="checkbox" id="option1" name="option" value="공기밥" data-price="1000">
+                            <label for="option1">공기밥 <span class="option-price">+1000</span></label>
+                        </div>
+                        <div class="option-checkbox">
+                            <input type="checkbox" id="option2" name="option" value="선택안함" data-price="0">
+                            <label for="option2">선택안함</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 수량 선택 영역 -->
+                <div class="quantity-section detail-section">
+                    <h3>수량</h3>
+                    <div class="quantity-container">
+                        <button class="quantity-btn minus" id="quantity-minus">-</button>
+                        <span class="quantity-num" id="quantity-num">1</span>
+                        <button class="quantity-btn plus" id="quantity-plus">+</button>
                     </div>
                 </div>
 
@@ -99,9 +117,10 @@
                     </div>
                 </div>
 
-                <!-- 장바구니 버튼 -->
-                <div class="cart-button-container">
-                    <button id="add-to-cart-btn" class="add-to-cart-btn">장바구니 담기</button>
+                <!-- 버튼 컨테이너 -->
+                <div class="action-buttons-container">
+                    <button id="add-to-cart-btn" class="action-btn cart-btn">장바구니</button>
+                    <button id="order-now-btn" class="action-btn order-btn">바로결제</button>
                 </div>
             </div>
         </div>

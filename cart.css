@@ -1,9 +1,8 @@
 /* 장바구니 페이지 스타일 */
 .header {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
 }
-
 
 .back-btn {
     margin: 0;

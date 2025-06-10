@@ -34,6 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const optionsSection = document.getElementById('options-section');
     const optionsContainer = document.getElementById('options-container');
     
+    // 수량 선택 요소
+    const quantityMinusBtn = document.getElementById('quantity-minus');
+    const quantityPlusBtn = document.getElementById('quantity-plus');
+    const quantityNumElement = document.getElementById('quantity-num');
+    let quantity = 1;
+    
     // 알레르기 정보 모달 요소
     const allergyInfoBtn = document.getElementById('allergy-info-btn');
     const allergyModal = document.getElementById('allergy-modal');
@@ -46,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalPriceElement = document.getElementById('total-price');
     const optionsPriceRow = document.getElementById('options-price-row');
     const addToCartBtn = document.getElementById('add-to-cart-btn');
+    const orderNowBtn = document.getElementById('order-now-btn');
     
     // 메뉴 정보 표시
     function displayMenuDetail() {
@@ -82,37 +89,52 @@ document.addEventListener('DOMContentLoaded', function() {
         updatePriceInfo();
     }
     
-    // 옵션 렌더링
+    // 옵션 렌더링 - 체크박스 형식으로 변경
     function renderOptions() {
         optionsContainer.innerHTML = '';
         
         menu.options.forEach(option => {
-            const optionBtn = document.createElement('button');
-            optionBtn.className = 'option-btn';
-            // 옵션 이름과 가격 표시
-            optionBtn.textContent = `${option.name} (+${option.price.toLocaleString()}원)`;
+            const optionDiv = document.createElement('div');
+            optionDiv.className = 'option-checkbox';
             
-            // 옵션 클릭 이벤트
-            optionBtn.addEventListener('click', () => {
-                // 옵션 토글
-                // 선택된 옵션에서 옵션 객체 찾기
-                const isSelected = selectedOptions.some(opt => opt.name === option.name);
-                
-                if (isSelected) {
-                    // 이미 선택된 경우 제거
-                    selectedOptions = selectedOptions.filter(opt => opt.name !== option.name);
-                    optionBtn.classList.remove('selected');
-                } else {
-                    // 선택되지 않은 경우 추가
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `option-${option.name.replace(/\s+/g, '-').toLowerCase()}`;
+            checkbox.name = 'option';
+            checkbox.value = option.name;
+            checkbox.dataset.price = option.price;
+            
+            const label = document.createElement('label');
+            label.htmlFor = checkbox.id;
+            label.textContent = option.name;
+            
+            if (option.price > 0) {
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'option-price';
+                priceSpan.textContent = ` +${option.price.toLocaleString()}원`;
+                label.appendChild(priceSpan);
+            }
+            
+            // 옵션 체크박스 이벤트
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    // 체크된 경우 추가
                     selectedOptions.push(option);
-                    optionBtn.classList.add('selected');
+                } else {
+                    // 체크 해제된 경우 제거
+                    const optionIndex = selectedOptions.findIndex(item => item.name === option.name);
+                    if (optionIndex !== -1) {
+                        selectedOptions.splice(optionIndex, 1);
+                    }
                 }
                 
-                // 가격 업데이트
+                // 가격 정보 업데이트
                 updatePriceInfo();
             });
             
-            optionsContainer.appendChild(optionBtn);
+            optionDiv.appendChild(checkbox);
+            optionDiv.appendChild(label);
+            optionsContainer.appendChild(optionDiv);
         });
     }
     
@@ -146,10 +168,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // 즐겨찾기 버튼 클릭 이벤트 - 버튼이 존재하는 경우에만 이벤트 리스너 추가
     if (favoriteBtn) {
         favoriteBtn.addEventListener('click', () => {
-            toggleFavorite(menu.id);
-            menu.isFavorite = !menu.isFavorite; // 현재 페이지의 상태 업데이트
+            // 즐겨찾기 상태 변경
+            menu.isFavorite = !menu.isFavorite;
             favoriteBtn.classList.toggle('active');
+            
+            // localStorage에 즐겨찾기 정보 저장
+            saveFavoritesToLocalStorage();
         });
+    }
+    
+    // 즐겨찾기 정보를 localStorage에 저장하는 함수
+    function saveFavoritesToLocalStorage() {
+        // 메뉴 데이터에서 현재 메뉴의 즐겨찾기 상태 업데이트
+        const menuIndex = menuData.findIndex(item => item.id === menu.id);
+        if (menuIndex !== -1) {
+            menuData[menuIndex].isFavorite = menu.isFavorite;
+        }
+        
+        // 즐겨찾기된 모든 메뉴의 ID만 추출하여 저장
+        const favorites = menuData
+            .filter(item => item.isFavorite)
+            .map(item => item.id);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+    
+    // localStorage에서 즐겨찾기 정보를 불러오는 함수
+    function loadFavoritesFromLocalStorage() {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        
+        // 로드된 즐겨찾기 상태 적용
+        const menuIndex = menuData.findIndex(item => item.id === menu.id);
+        if (menuIndex !== -1) {
+            menuData[menuIndex].isFavorite = favorites.includes(menu.id);
+            menu.isFavorite = favorites.includes(menu.id);
+        }
     }
     
     // 가격 정보 업데이트 함수
@@ -171,10 +223,25 @@ document.addEventListener('DOMContentLoaded', function() {
             optionsPriceRow.style.display = 'none';
         }
         
-        // 총 가격 계산 및 표시
-        const totalPrice = menu.price + optionsPrice;
+        // 총 가격 계산 및 표시 (수량 반영)
+        const totalPrice = (menu.price + optionsPrice) * quantity;
         totalPriceElement.textContent = `${totalPrice.toLocaleString()}원`;
     }
+    
+    // 수량 버튼 이벤트 리스너
+    quantityMinusBtn.addEventListener('click', () => {
+        if (quantity > 1) {
+            quantity--;
+            quantityNumElement.textContent = quantity;
+            updatePriceInfo();
+        }
+    });
+    
+    quantityPlusBtn.addEventListener('click', () => {
+        quantity++;
+        quantityNumElement.textContent = quantity;
+        updatePriceInfo();
+    });
     
     // 장바구니 버튼 클릭 이벤트
     addToCartBtn.addEventListener('click', () => {
@@ -190,9 +257,9 @@ document.addEventListener('DOMContentLoaded', function() {
             name: menu.name,
             price: menu.price,
             optionsPrice: optionsPrice,
-            totalPrice: menu.price + optionsPrice,
+            totalPrice: (menu.price + optionsPrice) * quantity,
             options: selectedOptions,
-            quantity: 1,
+            quantity: quantity,
             image: menu.image || 'images/default.png'
         };
         
@@ -203,6 +270,34 @@ document.addEventListener('DOMContentLoaded', function() {
         if(confirm('장바구니에 추가되었습니다. 장바구니 페이지로 이동하시겠습니까?')) {
             window.location.href = 'cart.html';
         }
+    });
+    
+    // 바로결제 버튼 클릭 이벤트
+    orderNowBtn.addEventListener('click', () => {
+        // 추가 가격 계산
+        let optionsPrice = 0;
+        selectedOptions.forEach(option => {
+            optionsPrice += option.price;
+        });
+        
+        // 장바구니 정보 구성
+        const cartItem = {
+            id: menu.id,
+            name: menu.name,
+            price: menu.price,
+            optionsPrice: optionsPrice,
+            totalPrice: (menu.price + optionsPrice) * quantity,
+            options: selectedOptions,
+            quantity: quantity,
+            image: menu.image || 'images/default.png'
+        };
+        
+        // 임시 장바구니에 추가 (바로 결제용)
+        let directOrder = [cartItem];
+        localStorage.setItem('directOrder', JSON.stringify(directOrder));
+        
+        // 결제 페이지로 이동
+        window.location.href = 'payment.html?direct=true';
     });
     
     // 장바구니에 메뉴 추가 함수
@@ -216,6 +311,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // 로컬 스토리지에 저장
         localStorage.setItem('cart', JSON.stringify(cartItems));
     }
+    
+    // localStorage에서 즐겨찾기 정보 불러오기
+    loadFavoritesFromLocalStorage();
     
     // 초기화
     displayMenuDetail();
