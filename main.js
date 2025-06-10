@@ -134,8 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 상단 아이콘 클릭 이벤트
     document.getElementById('search-btn').addEventListener('click', function() {
-        console.log('검색 페이지로 이동');
-        // 추후 구현
+        // 검색 페이지로 이동
+        window.location.href = 'search.html';
     });
 
     document.getElementById('cart-btn').addEventListener('click', function() {
