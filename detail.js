@@ -39,6 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const allergyModal = document.getElementById('allergy-modal');
     const closeBtn = document.querySelector('.close-btn');
     const confirmBtn = document.querySelector('.confirm-btn');
+    
+    // 가격 표시 요소
+    const basePriceElement = document.getElementById('base-price');
+    const optionsPriceElement = document.getElementById('options-price');
+    const totalPriceElement = document.getElementById('total-price');
+    const optionsPriceRow = document.getElementById('options-price-row');
     const addToCartBtn = document.getElementById('add-to-cart-btn');
     
     // 메뉴 정보 표시
@@ -71,6 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             optionsSection.style.display = 'none';
         }
+        
+        // 가격 정보 업데이트
+        updatePriceInfo();
     }
     
     // 옵션 렌더링
@@ -80,20 +89,27 @@ document.addEventListener('DOMContentLoaded', function() {
         menu.options.forEach(option => {
             const optionBtn = document.createElement('button');
             optionBtn.className = 'option-btn';
-            optionBtn.textContent = option;
+            // 옵션 이름과 가격 표시
+            optionBtn.textContent = `${option.name} (+${option.price.toLocaleString()}원)`;
             
             // 옵션 클릭 이벤트
             optionBtn.addEventListener('click', () => {
                 // 옵션 토글
-                if (selectedOptions.includes(option)) {
+                // 선택된 옵션에서 옵션 객체 찾기
+                const isSelected = selectedOptions.some(opt => opt.name === option.name);
+                
+                if (isSelected) {
                     // 이미 선택된 경우 제거
-                    selectedOptions = selectedOptions.filter(opt => opt !== option);
+                    selectedOptions = selectedOptions.filter(opt => opt.name !== option.name);
                     optionBtn.classList.remove('selected');
                 } else {
                     // 선택되지 않은 경우 추가
                     selectedOptions.push(option);
                     optionBtn.classList.add('selected');
                 }
+                
+                // 가격 업데이트
+                updatePriceInfo();
             });
             
             optionsContainer.appendChild(optionBtn);
@@ -136,13 +152,45 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 장바구니 담기 버튼 클릭 이벤트
+    // 가격 정보 업데이트 함수
+    function updatePriceInfo() {
+        // 기본 가격 설정
+        basePriceElement.textContent = `${menu.price.toLocaleString()}원`;
+        
+        // 옵션 가격 계산
+        let optionsPrice = 0;
+        selectedOptions.forEach(option => {
+            optionsPrice += option.price;
+        });
+        
+        // 옵션 가격 표시
+        if(optionsPrice > 0) {
+            optionsPriceRow.style.display = 'flex';
+            optionsPriceElement.textContent = `+${optionsPrice.toLocaleString()}원`;
+        } else {
+            optionsPriceRow.style.display = 'none';
+        }
+        
+        // 총 가격 계산 및 표시
+        const totalPrice = menu.price + optionsPrice;
+        totalPriceElement.textContent = `${totalPrice.toLocaleString()}원`;
+    }
+    
+    // 장바구니 버튼 클릭 이벤트
     addToCartBtn.addEventListener('click', () => {
+        // 추가 가격 계산
+        let optionsPrice = 0;
+        selectedOptions.forEach(option => {
+            optionsPrice += option.price;
+        });
+        
         // 장바구니 정보 구성
         const cartItem = {
             id: menu.id,
             name: menu.name,
             price: menu.price,
+            optionsPrice: optionsPrice,
+            totalPrice: menu.price + optionsPrice,
             options: selectedOptions,
             quantity: 1,
             image: menu.image || 'images/default.png'

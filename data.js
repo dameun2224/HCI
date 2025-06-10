@@ -35,7 +35,7 @@ const menuData = [
         price: 4500,
         allergens: '계란(Eggs)',
         hasOptions: true,
-        options: ['곱빼기'],
+        options: [{name: '곱빼기', price: 1000}],
         image: 'images/3.png',
         isFavorite: false
     },
@@ -230,7 +230,7 @@ const menuData = [
         price: 3000,
         allergens: '대두(Soy)',
         hasOptions: true,
-        options: ['곱빼기'],
+        options: [{name: '곱빼기', price: 1000}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -243,7 +243,7 @@ const menuData = [
         price: 3500,
         allergens: '없음(None)',
         hasOptions: true,
-        options: ['곱빼기'],
+        options: [{name: '곱빼기', price: 1000}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -256,7 +256,7 @@ const menuData = [
         price: 3800,
         allergens: '생선(Fish)',
         hasOptions: true,
-        options: ['곱빼기'],
+        options: [{name: '곱빼기', price: 1000}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -269,7 +269,7 @@ const menuData = [
         price: 4000,
         allergens: '갑각류(Shellfish)',
         hasOptions: true,
-        options: ['곱빼기'],
+        options: [{name: '곱빼기', price: 1000}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -282,7 +282,7 @@ const menuData = [
         price: 5500,
         allergens: '계란(Eggs)',
         hasOptions: true,
-        options: ['곱빼기'],
+        options: [{name: '곱빼기', price: 1000}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -308,7 +308,7 @@ const menuData = [
         price: 3000,
         allergens: '계란(Eggs)',
         hasOptions: true,
-        options: ['공기밥', '삶은계란'],
+        options: [{name: '공기밥', price: 1000}, {name: '삶은계란', price: 500}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -321,7 +321,7 @@ const menuData = [
         price: 3500,
         allergens: '유제품(Dairy)',
         hasOptions: true,
-        options: ['공기밥', '삶은계란'],
+        options: [{name: '공기밥', price: 1000}, {name: '삶은계란', price: 500}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -334,7 +334,7 @@ const menuData = [
         price: 3800,
         allergens: '대두(Soy)',
         hasOptions: true,
-        options: ['공기밥', '삶은계란'],
+        options: [{name: '공기밥', price: 1000}, {name: '삶은계란', price: 500}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -347,7 +347,7 @@ const menuData = [
         price: 3500,
         allergens: '없음(None)',
         hasOptions: true,
-        options: ['공기밥', '삶은계란'],
+        options: [{name: '공기밥', price: 1000}, {name: '삶은계란', price: 500}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -360,7 +360,7 @@ const menuData = [
         price: 5500,
         allergens: '계란(Eggs)',
         hasOptions: true,
-        options: ['공기밥', '삶은계란'],
+        options: [{name: '공기밥', price: 1000}, {name: '삶은계란', price: 500}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -373,7 +373,7 @@ const menuData = [
         price: 3500,
         allergens: '계란(Eggs), 유제품(Dairy)',
         hasOptions: true,
-        options: ['공기밥', '삶은계란'],
+        options: [{name: '공기밥', price: 1000}, {name: '삶은계란', price: 500}],
         image: 'images/default.png',
         isFavorite: false
     },
@@ -386,7 +386,7 @@ const menuData = [
         price: 3500,
         allergens: '없음(None)',
         hasOptions: true,
-        options: ['공기밥', '삶은계란'],
+        options: [{name: '공기밥', price: 1000}, {name: '삶은계란', price: 500}],
         image: 'images/default.png',
         isFavorite: false
     },

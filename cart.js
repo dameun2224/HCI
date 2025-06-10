@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: item.id,
                 name: item.name,
                 price: item.price,
+                optionsPrice: item.optionsPrice || 0,
+                totalPrice: (item.totalPrice || item.price) * item.quantity,
                 quantity: item.quantity,
                 options: item.options || [],
                 orderNumber: Math.floor(Math.random() * 900) + 100 // 3자리 랜덤 주문번호 생성
@@ -33,7 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // 총 결제 금액 계산
-        const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const totalAmount = cart.reduce((sum, item) => {
+            const itemPrice = item.totalPrice || item.price;
+            return sum + (itemPrice * item.quantity);
+        }, 0);
         
         // 주문 객체 생성
         const order = {
@@ -75,6 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // 이미지 경로 확인 및 기본 이미지 설정
             const imagePath = item.image || 'images/default.png';
             
+            // 옵션 문자열 처리
+            let optionsText = '';
+            if (item.options && item.options.length > 0) {
+                optionsText = item.options.map(opt => opt.name).join(', ');
+            }
+            
+            // 가격 처리
+            const itemTotalPrice = (item.totalPrice || item.price) * item.quantity;
+            
             cartItem.innerHTML = `
                 <div class="cart-item-info">
                     <div class="cart-item-image">
@@ -82,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="cart-item-details">
                         <h3>${item.name}</h3>
-                        <p>${item.options && item.options.length > 0 ? item.options.join(', ') : ''}</p>
+                        <p>${optionsText}</p>
                     </div>
                 </div>
                 <div class="cart-item-price">
@@ -91,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="quantity-num">${item.quantity}</span>
                         <button class="quantity-btn plus" data-index="${index}">+</button>
                     </div>
-                    <span>${(item.price * item.quantity).toLocaleString()}원</span>
+                    <span>${itemTotalPrice.toLocaleString()}원</span>
                     <div class="cart-item-delete" data-index="${index}">
                         <i class="fas fa-trash"></i>
                     </div>
@@ -145,7 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateTotalInfo() {
         const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
         const totalPrice = cart.reduce((sum, item) => {
-            return sum + (item.price * item.quantity);
+            const itemPrice = item.totalPrice || item.price;
+            return sum + (itemPrice * item.quantity);
         }, 0);
         
         document.getElementById('totalQuantity').textContent = `총 ${totalQuantity}개 메뉴`;
