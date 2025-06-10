@@ -13,23 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // UI 요소 참조
     const backBtn = document.getElementById('back-btn');
-    const statusText = document.getElementById('status-text');
-    const statusTime = document.getElementById('status-time');
-    const progressFill = document.getElementById('progress-fill');
-    const stepPreparing = document.getElementById('step-preparing');
-    const stepReady = document.getElementById('step-ready');
-    const stepComplete = document.getElementById('step-complete');
     const orderNumber = document.getElementById('order-number');
     const orderTime = document.getElementById('order-time');
-    const menuImage = document.getElementById('menu-image');
     const menuName = document.getElementById('menu-name');
-    const menuNameEng = document.getElementById('menu-name-eng');
-    const menuOptions = document.getElementById('menu-options');
-    const menuPrice = document.getElementById('menu-price');
-    const optionsPrice = document.getElementById('options-price');
-    const totalPrice = document.getElementById('total-price');
-    const paymentMethod = document.getElementById('payment-method');
-    const qrCode = document.getElementById('qr-code');
+    const menuPriceElem = document.querySelector('.menu-price');
+    const progressDots = document.querySelectorAll('.progress-dot');
     
     // 로컬 스토리지에서 주문 정보 가져오기
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -55,68 +43,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // UI 업데이트
     function updateUI() {
-        // 주문 상태 표시
-        statusText.textContent = orderStatus.text;
-        statusTime.textContent = orderStatus.timeText;
-        
-        // 진행바 업데이트
-        progressFill.style.width = orderStatus.progress + '%';
-        
-        // 진행 단계 표시
-        if (orderStatus.step >= 2) {
-            stepPreparing.classList.add('completed');
-        }
-        if (orderStatus.step >= 3) {
-            stepReady.classList.add('completed');
-        }
-        if (orderStatus.step >= 4) {
-            stepComplete.classList.add('completed');
-        }
-        
-        // 주문 번호 및 시간 표시
+        // 주문 번호 표시
         orderNumber.textContent = 'A' + orderItem.orderNumber;
         
         // 주문 시간 포맷팅
         const orderDate = new Date(order.time);
         orderTime.textContent = `${orderDate.getFullYear()}-${String(orderDate.getMonth() + 1).padStart(2, '0')}-${String(orderDate.getDate()).padStart(2, '0')} ${String(orderDate.getHours()).padStart(2, '0')}:${String(orderDate.getMinutes()).padStart(2, '0')}`;
         
-        // 메뉴 이미지 설정
-        const menu = getMenuById(orderItem.id);
-        if (menu && menu.image) {
-            menuImage.style.backgroundImage = `url('${menu.image}')`;
-        } else {
-            menuImage.style.backgroundImage = "url('images/default.png')";
-        }
-        
-        // 메뉴 정보 설정
+        // 메뉴 이름과 가격 설정
         menuName.textContent = orderItem.name;
-        menuNameEng.textContent = menu ? menu.nameEng : '';
+        menuPriceElem.textContent = `${orderItem.price.toLocaleString()}원`;
         
-        // 메뉴 옵션 설정
-        menuOptions.innerHTML = '';
-        if (orderItem.options && orderItem.options.length > 0) {
-            orderItem.options.forEach(option => {
-                const optionTag = document.createElement('span');
-                optionTag.className = 'option-tag';
-                optionTag.textContent = option;
-                menuOptions.appendChild(optionTag);
-            });
-        }
-        
-        // 가격 정보 설정
-        menuPrice.textContent = `${orderItem.price.toLocaleString()}원`;
-        
-        // 옵션 가격 계산 (이 예제에서는 옵션 가격 없음)
-        optionsPrice.textContent = '0원';
-        
-        // 총 가격
-        totalPrice.textContent = `${orderItem.price.toLocaleString()}원`;
-        
-        // 결제 수단 (예시)
-        paymentMethod.textContent = '계좌이체';
-        
-        // QR 코드 생성
-        createQRCode();
+        // 진행 상태 표시 - 진행도에 따라 단계 표시
+        const activeSteps = Math.min(Math.floor(orderStatus.progress / 25), 4);
+        progressDots.forEach((dot, index) => {
+            if (index < activeSteps) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
     }
     
     // 주문 상태 정보 반환 함수

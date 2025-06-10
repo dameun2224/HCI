@@ -17,7 +17,7 @@
                 <button id="back-btn" class="back-btn"><i class="fas fa-chevron-left"></i></button>
             </div>
             <div class="header-title">
-                <h1>주문 상세 정보</h1>
+                <h1>주문서 상세 정보</h1>
             </div>
             <div class="header-right">
                 <span style="color: white;"><i class="fas fa-ellipsis-v"></i></span>
@@ -27,89 +27,54 @@
         <!-- QR 코드 섹션 -->
         <div class="qr-section">
             <div class="qr-container">
-                <p class="qr-title">픽업 QR 코드</p>
-                <div class="qr-code" id="qr-code"></div>
-                <p class="qr-desc">카운터에서 QR 코드를 제시해 주세요.</p>
+                <div class="order-number-container">
+                    <span id="order-number" class="order-number">A262</span>
+                </div>
+                <div class="qr-code-wrapper">
+                    <img src="images/qr.png" class="qr-code" id="qr-code">
+                </div>
+                <div class="receipt-icon">
+                    <span class="category-number">6</span> 분식
+                </div>
+                <p class="qr-desc">QR을 태그하여 접수해주세요</p>
             </div>
         </div>
 
         <!-- 주문 정보 섹션 -->
         <div class="order-info-section">
-            <div class="order-card">
-                <div class="order-header">
-                    <div class="order-number-container">
-                        <span class="order-number-label">주문 번호</span>
-                        <span id="order-number" class="order-number">A261</span>
-                    </div>
-                    <div class="order-time-container">
-                        <span id="order-time">2025-06-10 12:45</span>
-                    </div>
+            <div class="order-info-header">
+                <div class="order-time-container">
+                    <i class="fas fa-clock"></i>
+                    <span id="order-time">2025-06-05 12:45</span>
                 </div>
+            </div>
+            
+            <div class="order-items">
+                <p class="section-title">주문내역</p>
 
                 <div class="menu-detail">
-                    <div class="menu-image" id="menu-image"></div>
                     <div class="menu-info">
-                        <h3 id="menu-name">비빔밥</h3>
-                        <p id="menu-name-eng">rice with a mix of vegetables</p>
-                        <div class="menu-options" id="menu-options">
-                            <span class="option-tag">일반</span>
-                            <span class="option-tag">배 미리 알아서 준비</span>
-                        </div>
+                        <h3 id="menu-name">김치우동 (매콤하게)</h3>
+                        <p class="menu-price">4,000원</p>
                     </div>
                 </div>
 
-                <div class="price-info">
-                    <div class="price-row">
-                        <span>메뉴 금액</span>
-                        <span id="menu-price">4,300원</span>
-                    </div>
-                    <div class="price-row">
-                        <span>옵션 추가</span>
-                        <span id="options-price">0원</span>
-                    </div>
-                    <div class="price-row total">
-                        <span>총 결제 금액</span>
-                        <span id="total-price">4,300원</span>
-                    </div>
+            </div>
+            
+            <div class="progress-indicator">
+                <div class="progress-dots">
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot"></div>
                 </div>
-
-                <div class="payment-info">
-                    <div class="payment-row">
-                        <span>결제 수단</span>
-                        <span id="payment-method">계좌이체</span>
-                    </div>
+                <div class="progress-labels">
+                    <span>주문접수</span>
+                    <span>음식준비중</span>
+                    <span>음식완료</span>
+                    <span>수령완료</span>
                 </div>
             </div>
-        </div>
-
-        <!-- 진행 상태 섹션 -->
-        <div class="progress-section">
-            <div class="progress-status">
-                <div id="status-text">주문 접수</div>
-                <div id="status-time">약 25분 소요 예정</div>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
-                <div class="progress-steps">
-                    <div class="progress-step completed">
-                        <div class="step-dot"></div>
-                        <div class="step-text">주문 접수</div>
-                    </div>
-                    <div class="progress-step" id="step-preparing">
-                        <div class="step-dot"></div>
-                        <div class="step-text">준비 중</div>
-                    </div>
-                    <div class="progress-step" id="step-ready">
-                        <div class="step-dot"></div>
-                        <div class="step-text">픽업 대기</div>
-                    </div>
-                    <div class="progress-step" id="step-complete">
-                        <div class="step-dot"></div>
-                        <div class="step-text">완료</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
