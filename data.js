@@ -5,7 +5,7 @@ const menuData = [
         name: '천원의 아침 (학생할인)',
         corner: '1번, 조식/석식',
         category: 'breakfast',
-        nameEng: 'Breakfast for 1000 Won (Student Discount)',
+        nameEng: '물만두떡국, 떡갈비구이, 부추샐러드, 김치볶음, 열무김치',
         price: 6000,
         allergens: '계란(Eggs)',
         hasOptions: false,
@@ -15,7 +15,7 @@ const menuData = [
     },
     {
         id: '2',
-        name: '돈육 짜글이',
+        name: '돈육짜글이*계란후라이',
         corner: '2번, 찌개/돌솥',
         category: 'stew',
         nameEng: 'Spicy Pork Stew',
@@ -28,7 +28,7 @@ const menuData = [
     },
     {
         id: '3',
-        name: '추억의 도시락 덮밥',
+        name: '추억의도시락덮밥',
         corner: '3번, 한식',
         category: 'korean',
         nameEng: 'Retro Lunchbox Rice Bowl',

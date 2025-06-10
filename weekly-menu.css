@@ -105,6 +105,7 @@ header h1 {
 .weekly-menu-table td {
     text-align: center;
     border-bottom: 1px solid #eee;
+    padding-left: 10px;
 }
 
 /* 각 요일의 마지막 행에 진한 구분선 추가 (마지막 요일 제외) */
@@ -179,6 +180,7 @@ header h1 {
     border: none;
     box-shadow: none;
     padding-left: 5px;
+    width: 280px;
 }
 
 .menu-item:last-child {

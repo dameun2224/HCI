@@ -6,95 +6,95 @@ document.addEventListener('DOMContentLoaded', function() {
             day: '월',
             date: '6/9',
             breakfast: [
-                { name: '물만두떡국, 떡갈비구이*부추샐러드,', price: 3500 }
+                { name: '미역국, 닭갈비, 감자채볶음, 꽈리멸치조림', price: 3500 }
             ],
             korean: [
-                { name: '오삼불고기덮밥', price: 5000 }
+                { name: '반계백숙', price: 5000 }
             ],
             omurice: [
-                { name: '치즈오므라이스', price: 4500 }
+                { name: '고구마치즈돈까스*오므라이스', price: 4500 }
             ],
             stew: [
-                { name: '부대찌개', price: 5000 }
+                { name: '목살필라프', price: 5000 }
             ],
             salad: [
-                { name: '치킨샐러드', price: 5000 }
+                { name: '버터새우샐러드', price: 5000 }
             ]
         },
         {
             day: '화',
             date: '6/10',
             breakfast: [
-                { name: '샌드위치', price: 3500 }
+                { name: '물만두떡국, 떡갈비구이, 부추샐러드, 김치볶음, 열무김치', price: 3500 }
             ],
             korean: [
-                { name: '닭갈비덮밥', price: 5000 }
+                { name: '돈육짜글이*계란후라이', price: 5000 }
             ],
             omurice: [
-                { name: '함박오므라이스', price: 4500 }
+                { name: '등심돈까스*오므라이스', price: 4500 }
             ],
             stew: [
-                { name: '김치찌개', price: 5000 }
+                { name: '추억의도시락덮밥', price: 5000 }
             ],
             salad: [
-                { name: '케이준치킨샐러드', price: 5000 }
+                { name: '목살샐러드', price: 5000 }
             ]
         },
         {
             day: '수',
             date: '6/11',
             breakfast: [
-                { name: '크로와상', price: 3800 }
+                { name: '근대감자된장국, 치킨까스*카레소스, 새송이피망볶음, 도토리묵무침', price: 3800 }
             ],
             korean: [
-                { name: '제육볶음', price: 5000 }
+                { name: '로제리조또*브레드, 함박스테이크', price: 5000 }
             ],
             omurice: [
-                { name: '불고기오므라이스', price: 4800 }
+                { name: '치킨스테이크*오므라이스', price: 4800 }
             ],
             stew: [
-                { name: '돼지국밥', price: 5000 }
+                { name: '치킨데리마요덮밥, 치킨가라아게', price: 5000 }
             ],
             salad: [
-                { name: '쉬림프샐러드', price: 5500 }
+                { name: '리코타치즈샐러드', price: 5500 }
             ]
         },
         {
             day: '목',
             date: '6/12',
             breakfast: [
-                { name: '팬케이크', price: 3500 }
+                { name: '돈육콩나물김치찌개, 소시지어묵볶음, 계란스크램블, 치커리토마토샐러드팬케이크', price: 3500 }
             ],
             korean: [
-                { name: '고추장불고기', price: 5000 }
+                { name: '국산소불고기뚝배기', price: 5000 }
             ],
             omurice: [
-                { name: '김치오므라이스', price: 4500 }
+                { name: '치즈함박*오므라이스', price: 4500 }
             ],
             stew: [
-                { name: '순두부찌개', price: 5000 }
+                { name: '돈삼겹김치볶음밥, 핫도그', price: 5000 }
             ],
             salad: [
-                { name: '그린샐러드', price: 4500 }
+                { name: '폴드포크샐러드', price: 4500 }
             ]
         },
         {
             day: '금',
             date: '6/13',
             breakfast: [
-                { name: '프렌치토스트', price: 3800 }
+                { name: '황태해장국, 오삼돈불고기, 고구마고로케, 깻잎순볶음', price: 3800 }
             ],
             korean: [
-                { name: '쭈꾸미볶음', price: 5500 }
+                { name: '한우육개장칼국수, 찐만두', price: 5500 }
             ],
             omurice: [
-                { name: '새우오므라이스', price: 5000 }
+                { name: '에그마니카츠&피자돈까스*오므라이스', price: 5000 }
             ],
             stew: [
-                { name: '된장찌개', price: 5000 }
+                { name: '치즈닭갈비볶음밥, 팝콘치킨', price: 5000 }
             ],
             salad: [
-                { name: '참치샐러드', price: 5000 }
+                { name: '베이컨샐러드', price: 5000 }
             ]
         }
     ];

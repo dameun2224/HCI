@@ -249,3 +249,7 @@ body {
 .favorite-btn.active {
     color: #ffcc00;
 }
+
+.fa-star {
+    color: #ff424f;
+}

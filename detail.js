@@ -62,7 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // 기본 정보 설정
         menuNameElement.textContent = menu.name;
         menuNameEngElement.textContent = menu.nameEng;
-        menuCornerElement.textContent = menu.corner;
+        if (menuCornerElement) {
+            menuCornerElement.textContent = menu.corner;
+        }
         menuPriceElement.textContent = `${menu.price.toLocaleString()}원`;
         
         // 알레르기 정보 설정
@@ -257,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: menu.name,
             price: menu.price,
             optionsPrice: optionsPrice,
-            totalPrice: (menu.price + optionsPrice) * quantity,
+            totalPrice: menu.price + optionsPrice, // 단가만 저장 (수량 곱하지 않음)
             options: selectedOptions,
             quantity: quantity,
             image: menu.image || 'images/default.png'
