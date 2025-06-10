@@ -418,18 +418,17 @@ const menuData = [
     }
 ];
 
-// 메뉴 데이터 관련 유틸리티 함수들
-// 카테고리별 메뉴 필터링
-function getMenuByCategory(category) {
-    return menuData.filter(menu => menu.category === category);
+// 메뉴 ID로 메뉴 가져오기
+function getMenuById(id) {
+    return menuData.find(menu => menu.id === id);
 }
 
-// 즐겨찾기 메뉴 가져오기
+// 즐겨찾기된 메뉴만 가져오기
 function getFavoriteMenus() {
     return menuData.filter(menu => menu.isFavorite);
 }
 
-// ID로 메뉴 찾기
-function getMenuById(id) {
-    return menuData.find(menu => menu.id === id);
+// 카테고리별 메뉴 가져오기
+function getMenuByCategory(category) {
+    return menuData.filter(menu => menu.category === category);
 }

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // UI 요소 참조
     const backBtn = document.getElementById('back-btn');
-    const favoriteBtn = document.getElementById('favorite-detail-btn');
+    const favoriteBtn = document.getElementById('favorite-detail-btn'); // 이 버튼은 존재하지 않을 수 있음
     const detailImage = document.querySelector('.detail-image');
     const menuNameElement = document.getElementById('menu-name');
     const menuNameEngElement = document.getElementById('menu-name-eng');
@@ -47,8 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
         menuPriceElement.textContent = `${menu.price.toLocaleString()}원`;
         menuAllergiesElement.textContent = menu.allergens || '알레르기 정보가 없습니다.';
         
-        // 즐겨찾기 상태 설정
-        favoriteBtn.classList.toggle('active', menu.isFavorite);
+        // 즐겨찾기 상태 설정 - 버튼이 존재하는 경우에만 실행
+        if (favoriteBtn) {
+            favoriteBtn.classList.toggle('active', menu.isFavorite);
+        }
         
         // 옵션 설정
         if (menu.hasOptions && menu.options.length > 0) {
@@ -91,12 +93,14 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'index.html';
     });
     
-    // 즐겨찾기 버튼 클릭 이벤트
-    favoriteBtn.addEventListener('click', () => {
-        toggleFavorite(menu.id);
-        menu.isFavorite = !menu.isFavorite; // 현재 페이지의 상태 업데이트
-        favoriteBtn.classList.toggle('active');
-    });
+    // 즐겨찾기 버튼 클릭 이벤트 - 버튼이 존재하는 경우에만 이벤트 리스너 추가
+    if (favoriteBtn) {
+        favoriteBtn.addEventListener('click', () => {
+            toggleFavorite(menu.id);
+            menu.isFavorite = !menu.isFavorite; // 현재 페이지의 상태 업데이트
+            favoriteBtn.classList.toggle('active');
+        });
+    }
     
     // 장바구니 담기 버튼 클릭 이벤트
     addToCartBtn.addEventListener('click', () => {

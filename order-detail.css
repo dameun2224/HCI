@@ -1,0 +1,240 @@
+/* 주문 상세 페이지 스타일 */
+.progress-section {
+    background-color: white;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.progress-status {
+    margin-bottom: 16px;
+}
+
+#status-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4a90e2;
+    margin-bottom: 4px;
+}
+
+#status-time {
+    font-size: 14px;
+    color: #666;
+}
+
+.progress-bar-container {
+    margin-top: 24px;
+}
+
+.progress-bar {
+    height: 4px;
+    background-color: #eee;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4a90e2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 0.5s ease;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4px;
+    position: relative;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 25%;
+}
+
+.step-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #eee;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.progress-step.completed .step-dot {
+    background-color: #4a90e2;
+}
+
+.step-text {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+}
+
+.progress-step.completed .step-text {
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+.order-info-section {
+    padding: 0 16px;
+    margin-bottom: 24px;
+}
+
+.order-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.order-number-container {
+    display: flex;
+    align-items: center;
+}
+
+.order-number-label {
+    font-size: 14px;
+    color: #666;
+    margin-right: 8px;
+}
+
+.order-number {
+    background-color: #4a90e2;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.order-time-container {
+    font-size: 14px;
+    color: #666;
+}
+
+.menu-detail {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px;
+}
+
+.menu-image {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    margin-right: 16px;
+    background-color: #eee;
+}
+
+.menu-info {
+    flex: 1;
+}
+
+.menu-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+}
+
+.menu-info p {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.menu-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.option-tag {
+    background-color: #f2f2f2;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 12px;
+    color: #666;
+}
+
+.price-info {
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.price-row.total {
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    margin-top: 12px;
+}
+
+.payment-info {
+    margin-bottom: 8px;
+}
+
+.payment-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #666;
+}
+
+.qr-section {
+    padding: 0 16px;
+    margin-bottom: 32px;
+}
+
+.qr-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.qr-code {
+    width: 180px;
+    height: 180px;
+    background-color: #f2f2f2;
+    margin-bottom: 16px;
+    background-size: contain;
+}
+
+.qr-desc {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}

@@ -114,8 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('order-history-btn').addEventListener('click', function() {
-        console.log('주문내역 페이지로 이동');
-        // 추후 구현
+        // 주문내역 페이지로 이동
+        window.location.href = 'order-history.html';
     });
 
     document.getElementById('weekly-menu-btn').addEventListener('click', function() {

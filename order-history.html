@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문내역 - 학식 어플리케이션</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="order-history.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <div class="header-left">
+                <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+            </div>
+            <div class="header-title">
+                <h1>주문내역</h1>
+            </div>
+            <div class="header-right">
+                <span style="color: white;"><i class="fas fa-ellipsis-v"></i></span>
+            </div>
+        </div>
+
+        <div class="tab-container">
+            <button id="tab-progress" class="tab-btn active">진행중</button>
+            <button id="tab-all" class="tab-btn">전체 내역</button>
+        </div>
+
+        <!-- 주문내역 컨테이너 -->
+        <div class="order-list-container">
+            <!-- 진행중인 주문 리스트 -->
+            <div id="progress-orders" class="order-list active-list">
+                <!-- 주문 내역이 JavaScript로 동적 생성됩니다 -->
+            </div>
+
+            <!-- 전체 주문 리스트 -->
+            <div id="all-orders" class="order-list">
+                <!-- 주문 내역이 JavaScript로 동적 생성됩니다 -->
+            </div>
+        </div>
+
+        <!-- 주문내역이 없을 때 표시할 메시지 -->
+        <div id="no-orders-message" class="no-orders-message" style="display: none;">
+            <i class="fas fa-receipt"></i>
+            <p>주문내역이 없습니다</p>
+            <button id="go-to-menu-btn" class="btn-primary">메뉴 보러가기</button>
+        </div>
+    </div>
+    
+    <script src="data.js"></script>
+    <script src="order-history.js"></script>
+</body>
+</html>

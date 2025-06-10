@@ -2,15 +2,10 @@
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #eee;
     margin-bottom: 16px;
-}
-
-.header-left {
-    margin-right: auto;
 }
 
 .back-btn {
@@ -41,18 +36,36 @@
 /* 메뉴 정보 영역 */
 .detail-info {
     margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 16px;
+}
+
+.menu-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
 }
 
 .detail-info h2 {
-    font-size: 22px;
-    margin-bottom: 4px;
+    font-size: 20px;
+    margin: 0 0 5px 0;
 }
 
 .detail-info p {
+    margin: 5px 0;
     color: #666;
-    margin-bottom: 6px;
+}
+
+/* 즐겨찾기 버튼 */
+.favorite-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.favorite-btn.active {
+    color: #ffcc00;
 }
 
 .price-container {

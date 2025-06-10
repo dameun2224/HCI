@@ -16,12 +16,45 @@ document.addEventListener('DOMContentLoaded', function() {
         const paymentMethod = document.getElementById('paymentMethod').value;
         alert(`${paymentMethod}로 결제가 완료되었습니다.\n주문이 접수되었습니다.`);
         
+        // 주문 데이터 생성
+        const orderDate = new Date();
+        const orderId = 'order_' + Date.now();
+        
+        // 주문 항목 생성
+        const orderItems = cart.map((item, index) => {
+            return {
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                quantity: item.quantity,
+                options: item.options || [],
+                orderNumber: Math.floor(Math.random() * 900) + 100 // 3자리 랜덤 주문번호 생성
+            };
+        });
+        
+        // 총 결제 금액 계산
+        const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        // 주문 객체 생성
+        const order = {
+            id: orderId,
+            time: orderDate.toISOString(),
+            totalAmount: totalAmount,
+            items: orderItems,
+            paymentMethod: paymentMethod
+        };
+        
+        // 기존 주문내역 불러오기 및 새 주문 추가
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        orders.unshift(order); // 최신 주문을 맨 앞에 추가
+        localStorage.setItem('orders', JSON.stringify(orders));
+        
         // 장바구니 비우기
         localStorage.removeItem('cart');
         cart = [];
         
-        // 메인 페이지로 이동
-        window.location.href = 'index.html';
+        // 주문내역 페이지로 이동
+        window.location.href = 'order-history.html';
     });
     
     // 장바구니 아이템 렌더링 함수
